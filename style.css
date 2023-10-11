@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+}
+figure img{
+    border-radius: 50%;
+    height: 25vh;
+}
+body {
+    background-image: url(images/header-image.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+h1 {
+    font-size: 5rem;
+    text-align: center;
+}
+h2{
+    font-size: 2.3rem;
+    text-align: center;
+    margin-top: 2%;
+}
+form{
+    padding-top: 1.5rem;
+    text-align: center;
+    font-size: 2.5rem;
+}
+label,input{
+    background-color: transparent;
+}
+label{
+    font-size: 2.5rem;
+}
+input{
+    font-size: 3.5rem;
+    height: 3rem;
+}
+button {
+    background-color: #E50914;
+    margin-top: 1.5rem;
+    font-size: 2rem;
+    height: 3rem;
+    width: 10.5rem;
+    /* opacity: .8; */
+    color: papayawhip;
+    cursor: pointer;
+    letter-spacing: .7px;
+}
+button:hover{
+    transform: scale(1.07);
+    opacity: .9;
+}
+#linktohome a{
+    text-decoration: none;
+    color: papayawhip;
+}
