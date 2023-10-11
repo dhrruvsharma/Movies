@@ -7,9 +7,10 @@
     <title>MoviesFlix</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="icon.png">
+    <script src="script.js"></script>
 </head>
 
-<body>
+<body id="home">
     <section>
         <figure>
             <img src="images/Flix.png" alt="">
@@ -28,15 +29,17 @@
     </section>
     <section>
         <form name="stream">
-            <label for="search" id="searchbar">Search Movies</label>
+            <label for="name">Search Movies</label>
             <br>
-            <input type="text" name="search" id="searchbar" autocomplete="off">
+            <input type="text" name="search" id="name" autocomplete="off">
             <br>
-            <button><b>Search ></b></button>
+            <a href="mainpage.html" target="_blank">
+                <input type="button" id="Search" value="Search">
+            </a>
         </form>
     </section>
     <section>
-        <h2 id="linktohome"><a href="mainpage.html">Not sure what to watch yet?</a></h2>
+        <h2 id="linktohome"><a href="main.html">Not sure what to watch yet?</a></h2>
     </section>
 </body>
 
