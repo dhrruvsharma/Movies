@@ -21,3 +21,4 @@ function search() {
             console.error(err);
         });
 }
+document.getElementById("movieImage").src = poster
