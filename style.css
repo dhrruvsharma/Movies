@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     color: white;
+    max-width: 100%;
 }
 
 figure img {
@@ -11,6 +12,7 @@ figure img {
 }
 
 #movie {
+    width: 100%;
     background-color: black;
 }
 
@@ -36,9 +38,11 @@ input {
     font-size: 3.5rem;
     height: 3rem;
 }
+
 #home {
     text-align: center;
 }
+
 #Search {
     background-color: #E50914;
     margin-top: 1.5rem;
@@ -59,6 +63,11 @@ input {
     color: papayawhip;
 }
 
+#searchform {
+    margin-top: 2rem;
+    text-align: center;
+}
+
 .movies {
     width: 100%;
     display: flex;
@@ -67,15 +76,16 @@ input {
 
 .movies li {
     flex: 1;
-    display: flex;
+    display: inline;
     flex-direction: column;
     align-items: center;
     list-style: none;
     margin: 10px;
-    padding: 15px;
+    padding: 1rem;
     border-radius: 12px;
     text-align: center;
     background: black;
+    max-width: 25rem;
 }
 
 .movies li img {
@@ -90,11 +100,35 @@ input {
     margin-top: auto;
 }
 
-#searchbutton{
+#searchbutton {
     font-size: 2.5rem;
     height: auto;
     background-color: #E50914;
 }
-#searchbutton:hover{
+
+#searchbutton:hover {
     cursor: pointer;
+}
+
+#searchicon {
+    height: 1.5rem;
+    width: 2rem;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    flex-wrap: wrap;
+}
+
+.flex-container .items {
+    display: inline;
+    overflow: hidden;
+    vertical-align: middle;
+}
+#movieName {
+    background-color: transparent;
+    color: white;
 }

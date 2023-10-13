@@ -1,4 +1,4 @@
-function search() {
+    function search() {
     const nm = document.getElementById("movieName").value;
     fetch(`https://imdb.p.rapidapi.com/title/find?q=${nm}`, {
         "method": "GET",
@@ -21,4 +21,3 @@ function search() {
             console.error(err);
         });
 }
-document.getElementById("movieImage").src = poster
