@@ -65,7 +65,7 @@ const prevBtn = () => {
 }
 
 const nextBtn = () => {
-    if ((CurrentPage * ItemsPerPage) / listArray.length) {
+    if ((CurrentPage * ItemsPerPage) <= listArray.length) {
         CurrentPage++;
         table();
     }
