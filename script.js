@@ -1,4 +1,5 @@
 var listArray = [];
+var count = 0;
 async function search() {
     const nm = document.getElementById("movieName").value
     const url = `https://imdb8.p.rapidapi.com/auto-complete?q=${nm}`;
@@ -25,13 +26,15 @@ async function search() {
     } catch (error) {
         console.error(error);
     }
+    count = 1;
 }
 let ItemsPerPage = 4;
 let CurrentPage = 1;
 
 async function table() {
-    await search();
-    console.log(listArray);
+    if (count === 0) {
+        await search();
+    }
     // Pagination starts here 
     const pages = [];
 
