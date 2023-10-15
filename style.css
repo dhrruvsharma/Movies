@@ -128,3 +128,11 @@ input {
     color: white;
     height: 4rem;
 }
+
+button {
+    background-color: #E50914;
+    height: 1rem;
+    width: 2rem;
+    text-align: center;
+    cursor: pointer;
+}

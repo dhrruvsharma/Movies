@@ -27,7 +27,7 @@ async function search() {
     }
 }
 let ItemsPerPage = 4;
-let CurrenPage = 1;
+let CurrentPage = 1;
 
 async function table() {
     await search();
@@ -39,7 +39,7 @@ async function table() {
         pages.push(i);
     }
 
-    const IndexOfLastPage = CurrenPage * ItemsPerPage;
+    const IndexOfLastPage = CurrentPage * ItemsPerPage;
 
     const IndexOfFirstPage = IndexOfLastPage - ItemsPerPage;
 
@@ -48,7 +48,22 @@ async function table() {
 
 
     const display = document.querySelector(".movies");
-    display.innerHTML += CurrentItems;
+    display.innerHTML = CurrentItems;
 }
 table();
 
+// Next and prev button functions
+
+const prevBtn = () => {
+    if ((CurrentPage - 1) * ItemsPerPage) {
+        CurrentPage--;
+        table();
+    }
+}
+
+const nextBtn = () => {
+    if ((CurrentPage * ItemsPerPage) / listArray.length) {
+        CurrentPage++;
+        table();
+    }
+}
