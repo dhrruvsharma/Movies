@@ -1,10 +1,11 @@
+var listArray = [];
 async function search() {
     const nm = document.getElementById("movieName").value
     const url = `https://imdb8.p.rapidapi.com/auto-complete?q=${nm}`;
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '6a268179c9msh2799944107ed12fp1222c4jsn3fcbb1ec4f89',
+            'X-RapidAPI-Key': '412947a964mshd7e4faff2a48ea7p1c47c0jsn14fcf82218e3',
             'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
         }
 
@@ -13,14 +14,41 @@ async function search() {
         const response = await fetch(url, options);
         const data = await response.json();
         const list = await data.d;
-        console.log(list);
+        // console.log(list.length);
+        // console.log(list);
         list.map((item) => {
             const title = item.l;
             const poster = item.i.imageUrl;
             const movie = `<li> <img src="${poster}"> <h2>${title}</h2></li>`
-            document.querySelector(".movies").innerHTML += movie;
+            listArray.push(movie);
         })
     } catch (error) {
         console.error(error);
     }
 }
+let ItemsPerPage = 4;
+let CurrenPage = 1;
+
+async function table() {
+    await search();
+    console.log(listArray);
+    // Pagination starts here 
+    const pages = [];
+
+    for (let i = 0; i <= Math.ceil(listArray.length / ItemsPerPage); i++) {
+        pages.push(i);
+    }
+
+    const IndexOfLastPage = CurrenPage * ItemsPerPage;
+
+    const IndexOfFirstPage = IndexOfLastPage - ItemsPerPage;
+
+    const CurrentItems = listArray.slice(IndexOfFirstPage, IndexOfLastPage);
+
+
+
+    const display = document.querySelector(".movies");
+    display.innerHTML += CurrentItems;
+}
+table();
+

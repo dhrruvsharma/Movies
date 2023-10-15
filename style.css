@@ -65,7 +65,6 @@ input {
 
 #searchform {
     margin-top: 2rem;
-    text-align: center;
 }
 
 .movies {
@@ -73,6 +72,7 @@ input {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    vertical-align: text-bottom;
 }
 
 .movies li {
@@ -87,11 +87,13 @@ input {
     text-align: center;
     background: black;
     max-width: 25rem;
+    vertical-align: text-bottom;
 }
 
 .movies li img {
-    max-width: 300px;
-    border-radius: 12px;
+    max-width: 25rem;
+    max-height: 500px;
+    border-radius: 1rem;
 }
 
 .movies li h2 {
@@ -103,17 +105,12 @@ input {
 
 #searchbutton {
     font-size: 2.5rem;
-    height: auto;
+    height: 4rem;
     background-color: #E50914;
 }
 
 #searchbutton:hover {
     cursor: pointer;
-}
-
-#searchicon {
-    height: 1.5rem;
-    width: 2rem;
 }
 
 .flex-container {
@@ -123,9 +120,11 @@ input {
     overflow: hidden;
     flex-wrap: wrap;
     min-width: 0;
+    vertical-align: bottom;
 }
 
 #movieName {
     background-color: transparent;
     color: white;
+    height: 4rem;
 }
