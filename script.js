@@ -3,7 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let list;
     var count = 0;
     const submit = document.getElementById("searchbutton");
-    // document.getElementById('searchbutton').addEventListener('click', search);
+    const loadingAnimation = document.getElementById("loading-animation");
+    const container = document.getElementById('container');
+    document.getElementById('searchbutton').addEventListener('click', table);
     function downloadData(data, filename) {
         const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
         const downloadURl = window.URL.createObjectURL(blob);
@@ -18,11 +20,18 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('download').addEventListener('click', () => {
         downloadData(list, 'api_data.json')
     });
-    submit.addEventListener('click', table);
+    function clearContainer() {
+        listArray = [];
+        CurrentPage = 1;
+    }
+    // submit.addEventListener('click', table);
     async function table() {
+        loadingAnimation.style.display = 'block';
         if (count === 0) {
             await search();
         }
+        count = 0;
+        loadingAnimation.style.display = 'none';
         // Pagination starts here 
 
         const IndexOfLastPage = CurrentPage * ItemsPerPage;
@@ -36,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
         display.innerHTML = CurrentItems;
     }
     async function search() {
+        clearContainer();
         const nm = await document.querySelector("#movieName").value;
         const url = `https://imdb8.p.rapidapi.com/auto-complete?q=${nm}`;
         const options = {
@@ -61,7 +71,6 @@ document.addEventListener("DOMContentLoaded", function () {
         } catch (error) {
             console.error(error);
         }
-        count = 1;
         document.getElementById('prev').style.display = 'inline';
         document.getElementById('next').style.display = 'inline';
         document.getElementById('download').style.display = 'block';
@@ -75,6 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const prevBtn = () => {
         if ((CurrentPage - 1) * ItemsPerPage) {
             CurrentPage--;
+            count = 1;
             table();
         }
     }
@@ -82,6 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const nextBtn = () => {
         if ((CurrentPage * ItemsPerPage) <= listArray.length) {
             CurrentPage++;
+            count = 1;
             table();
         }
     }
