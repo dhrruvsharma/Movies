@@ -10,30 +10,29 @@
 </head>
 
 <body id="movie">
-    <form id="searchform">
-        <div class="flex-container">
-            <div class="items">
-                <input type="text" name="movieName" id="movieName" autocomplete="off">
-            </div>
-            <div class="items">
-                <input type="button" value="Search" id="searchbutton" onclick="table();">
-            </div>
-        </div>
-    </form>
-    <div class="movies">
-        <div class="container">
-            <div class="card">
-                <div class="card_details">
-
+    <div id="main">
+        <form id="searchform">
+            <div class="flex-container">
+                <div class="items">
+                    <input type="text" name="movieName" id="movieName" autocomplete="off">
+                </div>
+                <div class="items">
+                    <input type="button" value="Search" id="searchbutton">
                 </div>
             </div>
+        </form>
+        <div class="movies">
+        </div>
+        <div class="paginator">
+            <input type="button" value="&lt;" id="prev">
+            <input type="button" value="&gt;" id="next">
+        </div>
+        <div class="downloadb">
+            <input type="button" value="Download Data" id="download">
         </div>
     </div>
-
-    <div class="paginator">
-        <input type="button" value="&lt;" onclick="prevBtn();">
-        <input type="button" value="&gt;" onclick="nextBtn();">
-    </div>
 </body>
+
+
 
 </html>
