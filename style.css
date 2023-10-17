@@ -67,7 +67,8 @@ input {
     margin-top: 2rem;
 }
 
-.movies {
+.movies,
+.previous {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -90,10 +91,31 @@ input {
     vertical-align: text-bottom;
 }
 
+.previous li {
+    flex: 1;
+    display: inline;
+    flex: column;
+    align-items: center;
+    list-style: none;
+    margin: 1rem;
+    text-align: center;
+    padding: 1.5rem;
+    background: black;
+    max-width: 30rem;
+}
+
 .movies li img {
-    max-width: 25rem;
+    max-width: 30rem;
     max-height: 500px;
     border-radius: 1rem;
+}
+
+.previous li img {
+    min-width: 20rem;
+    max-width: 30rem;
+    min-height: 600px;
+    border-radius: 1.5rem;
+    box-shadow: 2px 2px white;
 }
 
 .movies li h2 {
@@ -101,6 +123,11 @@ input {
     font-size: 1.8rem;
     padding: 15px 10px 0;
     margin-top: auto;
+}
+
+.previous li h2 {
+    font-size: 2rem;
+    padding: 1rem 1rem;
 }
 
 #searchbutton {

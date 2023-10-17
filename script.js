@@ -2,9 +2,21 @@ document.addEventListener("DOMContentLoaded", function () {
     var listArray = [];
     let list;
     var count = 0;
-    const submit = document.getElementById("searchbutton");
     const loadingAnimation = document.getElementById("loading-animation");
-    const container = document.getElementById('container');
+    const heading = document.getElementById('h');
+    const hide = document.querySelector('.previous');
+    const label = document.getElementById('movieName');
+    label.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            document.getElementById('searchbutton').click();
+        }
+    })
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            document.getElementById('searchbutton').click();
+        }
+    })
     document.getElementById('searchbutton').addEventListener('click', table);
     function downloadData(data, filename) {
         const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
@@ -45,26 +57,26 @@ document.addEventListener("DOMContentLoaded", function () {
         display.innerHTML = CurrentItems;
     }
     async function search() {
+        heading.style.display = 'none';
+        hide.style.display = 'none';
         clearContainer();
         const nm = await document.querySelector("#movieName").value;
-        const url = `https://imdb8.p.rapidapi.com/auto-complete?q=${nm}`;
+        const url = `https://online-movie-database.p.rapidapi.com/title/find?q=${nm}`;
         const options = {
             method: 'GET',
             headers: {
-                'X-RapidAPI-Key': '412947a964mshd7e4faff2a48ea7p1c47c0jsn14fcf82218e3',
-                'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
-            }
+                'X-RapidAPI-Key': 'd2d0bc225dmshf6da7f55306f702p12a843jsn501e94b79d66',
+                'X-RapidAPI-Host': 'online-movie-database.p.rapidapi.com'
 
+            }
         };
         try {
             const response = await fetch(url, options);
-            const data = await response.json();
-            list = await data.d;
-            // console.log(list.length);
-            // console.log(list);
+            const result = await response.json();
+            const list = result.results;
             list.map((item) => {
-                const title = item.l;
-                const poster = item.i.imageUrl;
+                const title = item.title;
+                const poster = item.image.url;
                 const movie = `<li> <img src="${poster}"> <h2>${title}</h2></li>`
                 listArray.push(movie);
             })
@@ -90,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const nextBtn = () => {
-        if ((CurrentPage * ItemsPerPage) <= listArray.length) {
+        if ((CurrentPage * ItemsPerPage) < listArray.length) {
             CurrentPage++;
             count = 1;
             table();
