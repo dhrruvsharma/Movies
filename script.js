@@ -18,20 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     })
     document.getElementById('searchbutton').addEventListener('click', table);
-    function downloadData(data, filename) {
-        const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
-        const downloadURl = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = downloadURl;
-        a.download = filename;
-        a.style.display = 'none';
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(downloadURl);
-    }
-    document.getElementById('download').addEventListener('click', () => {
-        downloadData(list, 'api_data.json')
-    });
+
     function clearContainer() {
         listArray = [];
         CurrentPage = 1;
@@ -73,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
             const response = await fetch(url, options);
             const result = await response.json();
-            const list = result.results;
+            list = result.results;
             list.map((item) => {
                 const title = item.title;
                 const poster = item.image.url;
@@ -110,4 +97,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     document.getElementById('prev').addEventListener('click', prevBtn);
     document.getElementById('next').addEventListener('click', nextBtn);
+    document.getElementById('download').addEventListener('click', () => {
+        downloadData(list, 'api_data.json')
+    });
+    function downloadData(data, filename) {
+        const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
+        const downloadURl = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = downloadURl;
+        a.download = filename;
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(downloadURl);
+    }
 })

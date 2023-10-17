@@ -108,6 +108,7 @@ input {
     max-width: 30rem;
     max-height: 500px;
     border-radius: 1rem;
+    box-shadow: 2px 2px white;
 }
 
 .previous li img {
