@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById('searchbutton').click();
         }
     })
-    document.getElementById('searchbutton').addEventListener('click', table);
+    document.getElementById("searchbutton").addEventListener('click',table);
 
     function clearContainer() {
         listArray = [];
@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     // submit.addEventListener('click', table);
     async function table() {
+        event.preventDefault();
         loadingAnimation.style.display = 'block';
         if (count === 0) {
             await search();
@@ -38,7 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const IndexOfFirstPage = IndexOfLastPage - ItemsPerPage;
 
         const CurrentItems = listArray.slice(IndexOfFirstPage, IndexOfLastPage);
-
 
         const display = document.querySelector(".movies");
         display.innerHTML = CurrentItems;
@@ -54,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function () {
             headers: {
                 'X-RapidAPI-Key': 'd2d0bc225dmshf6da7f55306f702p12a843jsn501e94b79d66',
                 'X-RapidAPI-Host': 'online-movie-database.p.rapidapi.com'
-
             }
         };
         try {
